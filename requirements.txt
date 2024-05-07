@@ -4,3 +4,4 @@ fugle-marketdata
 python-dotenv
 fastapi
 pydantic
+pytest

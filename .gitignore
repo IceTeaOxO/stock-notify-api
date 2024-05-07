@@ -5,3 +5,6 @@ auth.p12
 FGAPI
 __pycache__
 .pytest_cache
+.*
+*.pyc
+
