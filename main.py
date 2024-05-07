@@ -91,6 +91,9 @@ async def get_stock_symbol_list():
         stock_symbols_list = json.load(f)
     return stock_symbols_list
 
+@app.get("/health")
+def read_health():
+    return {"status": "ok"}
 
 # if __name__ == "__main__":
 #     import uvicorn
