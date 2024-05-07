@@ -4,3 +4,4 @@ auth.p12
 .env
 FGAPI
 __pycache__
+.pytest_cache
