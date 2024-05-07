@@ -3,3 +3,4 @@ config.simulation.ini
 auth.p12
 .env
 FGAPI
+__pycache__
