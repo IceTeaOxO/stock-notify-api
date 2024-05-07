@@ -1,0 +1,19 @@
+{
+    "strategies": [
+        {
+            "file_name": "3",
+            "strategy": {
+            "strategy_name": "momentum_strategy",
+            "parameters": {
+              "min_volume_change_percent": 3,
+              "min_price_change_percent": 1
+            }
+          },
+          "data": [
+            "2330","0050"
+          ],
+          "webhook_url": "https://discord.com/api/webhooks/your_webhook_id/your_webhook_token",
+          "webhook_time": "300"
+        }
+    ]
+}

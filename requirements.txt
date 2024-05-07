@@ -1,0 +1,6 @@
+backtrader
+fugle-trade
+fugle-marketdata
+python-dotenv
+fastapi
+pydantic
