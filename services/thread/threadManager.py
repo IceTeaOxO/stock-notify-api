@@ -1,9 +1,4 @@
-import threading
-import time
-
 from services.thread.workerThread import WorkerThread
-from services.strategy.momentum_strategy import momentum_strategy
-
 
 
 class ThreadManager:
@@ -14,7 +9,7 @@ class ThreadManager:
             cls._instance = super(ThreadManager, cls).__new__(cls)
             # 在這裡初始化 ThreadManager 的屬性
         return cls._instance
-    
+
     def __init__(self):
         if not hasattr(self, 'threads'):
             self.threads = {}
@@ -58,13 +53,17 @@ class ThreadManager:
         # 將參數打包成args並傳遞給WorkerThread
         args = tuple(parameters.values())
         # 將所有參數包裝成kwargs並傳遞給WorkerThread
-        kwargs = {**parameters, 'data': data, 'webhook_url': webhook_url, 'webhook_time': webhook_time}
+        kwargs = {
+            **parameters,
+            'data': data,
+            'webhook_url': webhook_url,
+            'webhook_time': webhook_time
+            }
 
         # 這邊直接傳入對應的函式，而非函式名稱
         thread = WorkerThread(thread_name, work_function, *args, **kwargs)
         self.add_thread(thread_name, thread)
         thread.start()
-        
 
     def stop_thread_by_name(self, name):
         """根據名稱優雅地中斷線程"""

@@ -2,6 +2,7 @@ import json
 import os
 from dotenv import load_dotenv
 
+
 class FileManager:
     _instance = None
 
@@ -10,7 +11,7 @@ class FileManager:
             cls._instance = super(FileManager, cls).__new__(cls)
             # 在這裡初始化 ThreadManager 的屬性
         return cls._instance
-    
+
     def __init__(self):
         load_dotenv()
         self.directory = os.getenv('file_directory')

@@ -1,6 +1,7 @@
 import threading
 import time
 
+
 class WorkerThread(threading.Thread):
     def __init__(self, thread_name, work_function, *args, **kwargs):
         super().__init__()
@@ -11,10 +12,9 @@ class WorkerThread(threading.Thread):
         self.running = True
         self.previous_quotes = {}  # 用於存儲策略的狀態，如果有需要
         try:
-            self.webhook_time = float(kwargs.get("webhook_time",300))
+            self.webhook_time = float(kwargs.get("webhook_time", 300))
         except ValueError:
             self.webhook_time = 300
-
 
     def run(self):
         print(f"Thread {self.name} starting with data: {self.kwargs}")
@@ -22,12 +22,13 @@ class WorkerThread(threading.Thread):
         while self.running:
             if self.work_function.__name__ == "momentum_strategy":
                 self.kwargs["previous_quotes"] = self.previous_quotes
-                self.previous_quotes = self.work_function(**self.kwargs)  # 更新 previous_quotes
+                # 更新 previous_quotes
+                self.previous_quotes = self.work_function(**self.kwargs)
                 # 將 previous_quotes 傳遞給策略函數
 
             else:
                 print("Function not found")
-            
+
             time.sleep(self.webhook_time)
         print(f"Thread {self.name} stopped")
 
