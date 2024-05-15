@@ -1,4 +1,5 @@
 from services.thread.workerThread import WorkerThread
+from services.strategy.momentum_strategy import momentum_strategy
 
 
 class ThreadManager:
@@ -37,7 +38,7 @@ class ThreadManager:
 
         # print(f"Starting thread for {thread_name}")
         # print(f"Strategy: {strategy}")
-        # print(f"Work function name: {work_function_name}")
+        print(f"Work function name: {work_function_name}")
         # print(f"Parameters: {parameters}")
         # print(f"Data: {data}")
         # print(f"Webhook URL: {webhook_url}")
