@@ -8,12 +8,12 @@
         }
     },
     "data": [
-        "2330",
-        "0050",
-        "2609",
+        "6121",
         "2881",
-        "6121"
+        "2888",
+        "3376",
+        "6208"
     ],
-    "webhook_url": "https://discord.com/api/webhooks/your_webhook_id/your_webhook_token",
-    "webhook_time": "300"
+    "webhook_url": "http://127.0.0.1:6666/api/send-message",
+    "webhook_time": "30"
 }

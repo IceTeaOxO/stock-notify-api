@@ -39,19 +39,21 @@ def momentum_strategy(**kwargs):
         # 檢查是否有前一次的報價數據
         if symbol in previous_quotes:
             previous_quote = previous_quotes[symbol]
-            # 計算五分鐘成交量變化和價格變化
-            # volume_change = quote["total"]["tradeVolume"] - /
-            # previous_quote["total"]["tradeVolume"]
-            # 計算五分鐘成交量變化百分比和價格變化百分比
-            volume_change_percent = (
-                (quote["total"]["tradeVolume"] -
-                 previous_quote["total"]["tradeVolume"]) /
-                previous_quote["total"]["tradeVolume"] * 100
-            )
-            price_change_percent = (
-                (quote["closePrice"] - previous_quote["closePrice"]) /
-                previous_quote["closePrice"] * 100
-            )
+
+            try:
+                # 計算五分鐘成交量變化百分比和價格變化百分比
+                volume_change_percent = (
+                    (quote["total"]["tradeVolume"] -
+                     previous_quote["total"]["tradeVolume"]) /
+                    previous_quote["total"]["tradeVolume"] * 100
+                )
+                price_change_percent = (
+                    (quote["closePrice"] - previous_quote["closePrice"]) /
+                    previous_quote["closePrice"] * 100
+                )
+            except KeyError as e:
+                print(f"缺少必要的報價數據：{e}")
+                continue
 
             # 應用 Momentum 策略邏輯
             if (volume_change_percent > min_volume_change_percent and
@@ -60,7 +62,7 @@ def momentum_strategy(**kwargs):
 
                 response = requests.post(
                     webhook_url,
-                    json={"content": f"股票代號: {symbol} 上漲動力強！"}
+                    json={"message": f"股票代號: {symbol} 上漲動力強！"}
                 )
                 # 檢查是否成功
                 if response.status_code == 204:
@@ -75,7 +77,7 @@ def momentum_strategy(**kwargs):
 
                 response = requests.post(
                     webhook_url,
-                    json={"content": f"股票代號: {symbol} 下跌動力強！"}
+                    json={"message": f"股票代號: {symbol} 下跌動力強！"}
                 )
                 # 檢查是否成功
                 if response.status_code == 204:

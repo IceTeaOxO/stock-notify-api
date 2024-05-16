@@ -1,6 +1,6 @@
 backtrader
-fugle-trade
 fugle-marketdata
+# fugle-trade-core
 python-dotenv
 fastapi
 pydantic

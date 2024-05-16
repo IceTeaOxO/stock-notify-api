@@ -11,6 +11,15 @@ pip install -r requirements.txt
 ```
 uvicorn main:app --reload
 ```
+
+## docker
+```
+docker build -t notify-api .
+```
+```
+docker run -d -p 8000:8000 notify-api
+```
+
 # 專案說明
 `main.py`是專案進入點
 `/model`負責存放設定文件等檔案，以及規定資料的格式
